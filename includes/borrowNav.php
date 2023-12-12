@@ -18,7 +18,7 @@
             </div>
         </li>
         <li class="inline-block list-none px-4 text-xl hover:text-cyan-600"><a href="about.php"> About</a></li>
-        <li class="inline-block list-none px-4 text-xl hover:text-cyan-600"><a href="contact.php"> Contacts</a></li>
+        <li class="inline-block list-none px-4 text-xl hover:text-cyan-600"><a href="contact.php"> Contact Us</a></li>
         <li type="submit" name="logout" class="inline-block list-none px-4 text-xl hover:text-cyan-600"><a href="logout.php">Logout</a></li>
     </ul>
 </nav>
