@@ -1,4 +1,5 @@
 <?php
+include "includes/route.php";
 require 'includes/snippet.php';
 require 'includes/db-inc.php';
 include "includes/header.php";

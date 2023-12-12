@@ -1,49 +1,36 @@
-<?php 
-		require 'includes/snippet.php';
-	require 'includes/db-inc.php';
-	include "includes/header.php";
+<?php
+include "includes/route.php";
+require 'includes/snippet.php';
+require 'includes/db-inc.php';
+include "includes/header.php";
 
 
-	if (isset($_POST['submit'])) {
-		//Getting the values from the forms
-		$name = sanitize(trim($_POST['name']));
-		$username = sanitize(trim($_POST['username']));
-		$password1 = sanitize(trim($_POST['password1']));
-		$password2 = sanitize(trim($_POST['password2']));
-		$email = sanitize(trim($_POST['email']));
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	$first_name = $_POST['first_name'];
+	$last_name = $_POST['last_name'];
+	$username = $_POST['username'];
+	$email = $_POST['email'];
+	$password = $_POST['password'];
 
-//Check if the password matches
-		if ($password1 == $password2) {
-			//create an sql statement
-		$sql = "INSERT into admin (admin_name, password, username, email) values ('$name', '$password1', '$username', '$email')";
-		//query the database
-		$query = mysqli_query($conn, $sql);
-		$error = false;
+	$join_date = date("Y-m-d");
 
-		if ($query) {
-		$error = true;
-		}
-		else {
-		echo "<script>alert('Admin not added!');
-					</script>";	
-		}
+	$insertQuery = "INSERT INTO users (first_name, last_name, username, user_type, email, password, join_date)
+                    VALUES ('$first_name', '$last_name', '$username', 'admin', '$email', '$password', '$join_date')";
 
-		}
+	if (mysqli_query($conn, $insertQuery)) {
 
-		else {
-			echo  "<script>alert('Password mismatched!')</script>";
-		}
-
-		
+		header("location: adduser.php");
+		exit();
+	} else {
+		echo "Error: " . mysqli_error($conn);
 	}
-
- ?>
+}
+?>
 
 
 <div class="container">
 	<?php include "includes/nav.php"; ?>
-	<div class="container  col-lg-9 col-md-11 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-1 col-sm-offset-0 col-xs-offset-0  "
-		style="margin-top: 30px">
+	<div class="container  col-lg-9 col-md-11 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-1 col-sm-offset-0 col-xs-offset-0  " style="margin-top: 30px">
 		<div class="jumbotron login col-lg-10 col-md-11 col-sm-12 col-xs-12">
 			<?php if (isset($error)) { ?>
 				<div class="alert alert-success alert-dismissable">
@@ -54,41 +41,41 @@
 			<p class="page-header" style="text-align: center">ADD ADMIN</p>
 
 			<div class="container">
-				<form class="form-horizontal" role="form" method="post" action="adduser.php"
-					enctype="multipart/form-data">
+				<form class="form-horizontal" role="form" method="post" action="adduser.php" enctype="multipart/form-data">
+					<div class="form-group">
+						<label for="Name" class="col-sm-2 control-label">First Name</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="first_name" placeholder="Enter First Name" id="name" required>
+						</div>
+					</div>
 					<div class="form-group">
 						<label for="Name" class="col-sm-2 control-label">Full Name</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="name" placeholder="Enter Full Name" id="name"
-								required>
+							<input type="text" class="form-control" name="last_name" placeholder="Enter Last Name" id="name" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="Username" class="col-sm-2 control-label">Username</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="username" placeholder="Enter Username"
-								id="username" required>
+							<input type="text" class="form-control" name="username" placeholder="Enter Username" id="username" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="Password" class="col-sm-2 control-label">Password</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" name="password1" placeholder="Enter Password"
-								id="password" required>
+							<input type="password" class="form-control" name="password" placeholder="Enter Password" id="password" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="Password" class="col-sm-2 control-label">Confirm Password</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" name="password2" placeholder="Enter Password"
-								id="password" required>
+							<input type="password" class="form-control" name="password2" placeholder="Enter Password" id="password" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="Password" class="col-sm-2 control-label">Email</label>
 						<div class="col-sm-10">
-							<input type="email" class="form-control" name="email" placeholder="Enter email" id="email"
-								required>
+							<input type="email" class="form-control" name="email" placeholder="Enter email" id="email" required>
 						</div>
 					</div>
 
@@ -111,7 +98,7 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript">
-	window.onload = function () {
+	window.onload = function() {
 		var input = document.getElementById('name').focus();
 	}
 </script>

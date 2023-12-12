@@ -1,23 +1,19 @@
 <?php
+include "includes/route.php";
 require 'includes/snippet.php';
 require 'includes/db-inc.php';
 include "includes/header.php";
-
-
-
 
 if (isset($_POST['del'])) {
 
 	$id = sanitize(trim($_POST['id']));
 
-	$sql_del = "DELETE from books where book_id = $id";
+	$sql_del = "DELETE FROM bookss where book_id = $id";
 	$error = false;
 	$result = mysqli_query($conn, $sql_del);
 	if ($result) {
 		$error = true;
 	}
-
-
 }
 
 
@@ -30,8 +26,7 @@ if (isset($_POST['del'])) {
 	<?php include "includes/nav.php"; ?>
 	<!-- navbar ends -->
 	<!-- info alert -->
-	<div class="alert alert-warning col-lg-7 col-md-12 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-0 col-sm-offset-1 col-xs-offset-0"
-		style="margin-top:70px">
+	<div class="alert alert-warning col-lg-7 col-md-12 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-0 col-sm-offset-1 col-xs-offset-0" style="margin-top:70px">
 
 		<span class="glyphicon glyphicon-book"></span>
 		<strong>Books</strong> Table
@@ -43,7 +38,6 @@ if (isset($_POST['del'])) {
 </div>
 <div class="container">
 	<div class="panel panel-default">
-		<!-- Default panel contents -->
 		<div class="panel-heading">
 			<?php if (isset($error) === true) { ?>
 				<div class="alert alert-success alert-dismissable">
@@ -52,8 +46,7 @@ if (isset($_POST['del'])) {
 				</div>
 			<?php } ?>
 			<div class="row">
-				<a href="addbook.php"><button class="btn btn-success col-lg-3 col-md-4 col-sm-11 col-xs-11 button"
-						style="margin-left: 15px;margin-bottom: 5px"><span class="glyphicon glyphicon-plus-sign"></span>
+				<a href="addbook.php"><button class="btn btn-success col-lg-3 col-md-4 col-sm-11 col-xs-11 button" style="margin-left: 15px;margin-bottom: 5px"><span class="glyphicon glyphicon-plus-sign"></span>
 						Add Book</button></a>
 				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-right">
 				</div>
@@ -79,7 +72,7 @@ if (isset($_POST['del'])) {
 
 				$text = sanitize(trim($_POST['text']));
 
-				$sql = "SELECT * FROM book where book_id = $text ";
+				$sql = "SELECT * FROM books where book_id = $text ";
 
 				$query = mysqli_query($conn, $sql);
 				$counter = 1;
@@ -97,16 +90,15 @@ if (isset($_POST['del'])) {
 						<td>
 							<?php echo $row['author_name']; ?>
 						</td>
-						
+
 						<form method='post' action='bookstable.php'>
 							<input type='hidden' value="<?php echo $row['book_id']; ?>" name='id'>
-							<td><button name='del' type='submit' value='Delete' class='btn btn-warning'
-									onclick='return Delete()'>DELETE</button></td>
+							<td><button name='del' type='submit' value='Delete' class='btn btn-warning' onclick='return Delete()'>DELETE</button></td>
 						</form>
 					</tbody>
 				<?php }
 			} else {
-				$sql2 = "SELECT * from book";
+				$sql2 = "SELECT * FROM books";
 
 				$query2 = mysqli_query($conn, $sql2);
 				$counter = 1;
@@ -124,16 +116,14 @@ if (isset($_POST['del'])) {
 						<td>
 							<?php echo $row['author_name']; ?>
 						</td>
-						
+
 						<form method='post' action='bookstable.php'>
 							<input type='hidden' value="<?php echo $row['book_id']; ?>" name='id'>
-							<td><button name='del' type='submit' value='Delete' class='btn btn-warning'
-									onclick='return Delete()'>DELETE</button></td>
+							<td><button name='del' type='submit' value='Delete' class='btn btn-warning' onclick='return Delete()'>DELETE</button></td>
 						</form>
 					</tbody>
 
-				<?php }
-
+			<?php }
 			}
 
 			?>
@@ -158,12 +148,10 @@ if (isset($_POST['del'])) {
 
 			<!-- button -->
 			<div class="modal-footer ">
-				<button class="col-lg-4 col-sm-4 col-xs-6 col-md-4 btn btn-warning pull-right" style="margin-left: 10px"
-					class="close" data-dismiss="modal">
+				<button class="col-lg-4 col-sm-4 col-xs-6 col-md-4 btn btn-warning pull-right" style="margin-left: 10px" class="close" data-dismiss="modal">
 					No
 				</button>&nbsp;
-				<button class="col-lg-4 col-sm-4 col-xs-6 col-md-4 btn btn-success pull-right" class="close"
-					data-dismiss="modal" data-toggle="modal" data-target="#info">
+				<button class="col-lg-4 col-sm-4 col-xs-6 col-md-4 btn btn-success pull-right" class="close" data-dismiss="modal" data-toggle="modal" data-target="#info">
 					Yes
 				</button>
 			</div>

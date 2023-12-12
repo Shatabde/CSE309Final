@@ -1,4 +1,5 @@
 <?php
+include "includes/route.php";
 require 'includes/snippet.php';
 require 'includes/db-inc.php';
 include "includes/header.php";
@@ -24,8 +25,6 @@ include "includes/header.php";
 <body>
 	<div class="container">
 		<?php include "includes/nav.php"; ?>
-		<!-- navbar ends -->
-		<!-- info alert -->
 		
 			<h4 class="center-block">Admin Dashboard </h4>
 		</div>

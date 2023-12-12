@@ -22,7 +22,7 @@ if (isset($_SESSION['admin'])) {
         <div class="collapse navbar-collapse" id="bs-example">
             <ul class="nav navbar-nav">
                 <?php if(isset($admin)) { ?>  
-                <li class="active"><a href="admin.php">Home</a></li>
+                <li><a href="admin.php">Home</a></li>
                 <li><a href="bookstable.php">Books</a></li>
                 <li><a href="users.php">Admins</a></li>
                 <li><a href="viewstudents.php">Students</a></li>

@@ -1,94 +1,87 @@
 <?php
+include "includes/route.php";
 require 'includes/snippet.php';
 require 'includes/db-inc.php';
 include "includes/header.php";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $join_date = date("Y-m-d");
+
+    $insertQuery = "INSERT INTO users (first_name, last_name, username, user_type, email, password, join_date)
+                    VALUES ('$first_name', '$last_name', '$username', 'borrowers', '$email', '$password', '$join_date')";
+
+    if (mysqli_query($conn, $insertQuery)) {
+
+        header("location: addstudent.php");
+        exit();
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+}
 ?>
 
 
 <div class="container">
     <?php include "includes/nav.php"; ?>
 
-    <div class="container  col-lg-9 col-md-11 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-1 col-sm-offset-0 col-xs-offset-0  "
-        style="margin-top: 20px">
+    <div class="container  col-lg-9 col-md-11 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-1 col-sm-offset-0 col-xs-offset-0  " style="margin-top: 20px">
         <div class="jumbotron login3 col-lg-10 col-md-11 col-sm-12 col-xs-12">
 
             <p class="page-header" style="text-align: center">ADD STUDENTS</p>
 
             <div class="container">
-                <form class="form-horizontal" role="form" action="addstudent.php" method="post"
-                    enctype="multipart/form-data">
+                <form class="form-horizontal" role="form" method="post" action="addstudent.php" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="Username" class="col-sm-2 control-label">FULL NAME</label>
+                        <label for="Name" class="col-sm-2 control-label">First Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="name" placeholder="Full name" id="name"
-                                required>
+                            <input type="text" class="form-control" name="first_name" placeholder="Enter First Name" id="name" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="Password" class="col-sm-2 control-label">MATRIC NO</label>
+                        <label for="Name" class="col-sm-2 control-label">Full Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="matric_no" placeholder="Matric Number"
-                                id="password" required>
+                            <input type="text" class="form-control" name="last_name" placeholder="Enter Last Name" id="name" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="Password" class="col-sm-2 control-label">DEPT</label>
+                        <label for="Username" class="col-sm-2 control-label">Username</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="dept" placeholder="Department" id="Address"
-                                required>
+                            <input type="text" class="form-control" name="username" placeholder="Enter Username" id="username" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="Password" class="col-sm-2 control-label">EMAIL</label>
+                        <label for="Password" class="col-sm-2 control-label">Password</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" name="email" placeholder="Email" id="password"
-                                required>
+                            <input type="password" class="form-control" name="password" placeholder="Enter Password" id="password" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="Password" class="col-sm-2 control-label">USERNAME</label>
+                        <label for="Password" class="col-sm-2 control-label">Confirm Password</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="username" placeholder="Username" id="password"
-                                required>
+                            <input type="password" class="form-control" name="password2" placeholder="Enter Password" id="password" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="Password" class="col-sm-2 control-label">PASSWORD</label>
+                        <label for="Password" class="col-sm-2 control-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" name="password" placeholder="password"
-                                id="password" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Password" class="col-sm-2 control-label">CONFRIM PASSWORD</label>
-                        <div class="col-sm-10">
-                            <input type="password" class="form-control" name="password2" placeholder="Confirm password"
-                                id="password" required>
+                            <input type="email" class="form-control" name="email" placeholder="Enter email" id="email" required>
                         </div>
                     </div>
 
-                    <input type="hidden" class="form-control" name="num_books" placeholder="books" id="password"
-                        required value="null">
-                    <input type="hidden" class="form-control" name="money_owed" placeholder="Money" id="password"
-                        required value="null">
-                    <div class="form-group">
-                        <label for="Password" class="col-sm-2 control-label">PHONE NUMBER</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="phone" placeholder="phone" id="password"
-                                required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button class="btn btn-info col-lg-12" data-toggle="modal" data-target="#info"
-                                name="submit">
-                                ADD MEMBER
+                    <div class="form-group ">
+                        <div class="col-sm-offset-2 col-sm-10 ">
+                            <button type="submit" class="btn btn-info col-lg-4 " name="submit">
+                                Submit
                             </button>
 
                         </div>
                     </div>
-
-
                 </form>
             </div>
         </div>
@@ -101,7 +94,7 @@ include "includes/header.php";
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript">
-    window.onload = function () {
+    window.onload = function() {
         var input = document.getElementById('name').focus();
     }
 </script>
