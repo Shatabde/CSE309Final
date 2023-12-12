@@ -8,9 +8,11 @@ if (isset($_POST['submit'])) {
     $title = sanitize(trim($_POST['title']));
     $book_type = sanitize(trim($_POST['book_type']));
     $author_name = sanitize(trim($_POST['author_name']));
+    $borrow_date = sanitize(trim($_POST['borrow_date']));
+    $return_date = sanitize(trim($_POST['return_date']));
 
     $sql = "INSERT INTO book(title, book_type, author_name, borrow_date, return_date)
-    VALUES ('$title', '$book_type', '$author_name')";
+    VALUES ('$title', '$book_type', '$author_name', '$borrow_date', '$return_date')";
 
 
     $query = mysqli_query($conn, $sql);
@@ -60,6 +62,18 @@ if (isset($_POST['submit'])) {
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="author_name" placeholder="Enter Author"
                                 id="password" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Publisher" class="col-sm-2 control-label">BORROW DATE</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" name="borrow_date" placeholder="" id="password" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Publisher" class="col-sm-2 control-label">RETURN DATE</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" name="return_date" placeholder="" id="password" required>
                         </div>
                     </div>
                     <div class="form-group">

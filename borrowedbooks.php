@@ -20,7 +20,7 @@ include "includes/header.php";
 
 <div class="container">
 	<div class="row">
-		<a href="addborrow.php"><button class="btn btn-success col-lg-3 col-md-4 col-sm-11 col-xs-11 button"
+		<a href="addbook.php"><button class="btn btn-success col-lg-3 col-md-4 col-sm-11 col-xs-11 button"
 				style="margin-left: 15px;margin-bottom: 5px"><span class="glyphicon glyphicon-plus-sign"></span>
 				Add Borrow</button></a>
 		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-right">
@@ -41,7 +41,7 @@ include "includes/header.php";
 					<th>ID</th>
 					<th>Book Name</th>
 					<th>Member Name</th>
-					<th>Borrow</th>
+					<th>Matric Number</th>
 
 				</tr>
 			</thead>

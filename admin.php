@@ -2,6 +2,7 @@
 require 'includes/snippet.php';
 require 'includes/db-inc.php';
 include "includes/header.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

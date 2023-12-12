@@ -2,6 +2,21 @@
 require 'includes/snippet.php';
 require 'includes/db-inc.php';
  include "includes/header.php"; 
+
+
+if(isset($_POST['del'])){
+	$id = trim($_POST['del-btn']);
+	$msg = "Paid";
+	$sql = "UPDATE borrow set `fine` = '$msg' where borrow_id = '$id'";
+	$query = mysqli_query($conn, $sql);
+	$error = false;
+	if($query){
+		$error = true;
+	}
+
+	
+}
+
  ?>
 
 
@@ -46,6 +61,29 @@ require 'includes/db-inc.php';
 		                </tr>    
 		          </thead>  
 
+		           <?php 
+                  		$sql = "SELECT * FROM borrow";
+                  		$query = mysqli_query($conn, $sql);
+                  		while($row = mysqli_fetch_assoc($query)) { 
+                   ?>
+
+		          <tbody> 
+		            <tr> 
+		             <td><?php echo $row['borrow_id']; ?></td>
+		             <td><?php echo $row['member_name']; ?></td>
+		             <td><?php echo $row['matric_no']; ?></td>
+		             <td><?php echo $row['book_name']; ?></td>
+		             <td><?php echo $row['borrow_date']; ?></td>
+		             <td><?php echo $row['return_date']; ?></td>
+		             <td><?php echo $row['fine']; ?></td>
+		             <td><form action="fines.php" method="post"> 
+                     		<input type="hidden" value="<?php echo $row['borrow_id']; ?>" name="del-btn">
+                      <button class="btn btn-warning" name="del">STOP COUNT</button>
+                     	</form>
+		             </td>
+		            </tr> 
+		            <?php } ?> 
+		         </tbody> 
 		   </table>
 		 
 	  </div>

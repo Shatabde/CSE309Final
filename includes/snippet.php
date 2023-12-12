@@ -35,3 +35,4 @@ $link = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname);
     }
     return $output;
 }
+

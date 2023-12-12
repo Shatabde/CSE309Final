@@ -68,12 +68,13 @@ if (isset($_POST['del'])) {
 					<th>Book Title</th>
 					<th>Book Type</th>
 					<th>Author Name</th>
-
 					<th>Delete</th>
 				</tr>
 			</thead>
 
 			<?php
+
+
 			if (isset($_POST['search'])) {
 
 				$text = sanitize(trim($_POST['text']));
