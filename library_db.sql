@@ -55,9 +55,10 @@ CREATE TABLE IF NOT EXISTS `user_books` (
   `no_of_borrowed_date` varchar(50) NOT NULL,
   `fine` text NOT NULL,
   PRIMARY KEY (`user_book_id`),
-  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
-  FOREIGN KEY (`book_id`) REFERENCES `books`(`book_id`)
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
+  FOREIGN KEY (`book_id`) REFERENCES `books`(`book_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 INSERT IGNORE INTO `users` (`id`, `first_name`, `last_name`, `username`, `email`, `password`, `user_type`, `join_date`)
 VALUES
@@ -85,5 +86,6 @@ CREATE TABLE IF NOT EXISTS messages (
     subject VARCHAR(255),
     message TEXT,
     cardId INT,
-    FOREIGN KEY (userId) REFERENCES users(id)
+    FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE
 );
+
