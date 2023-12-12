@@ -1,0 +1,97 @@
+css card fines
+book name, author nam, fine, date of issued
+Certainly! Mystery is a diverse genre with plenty of captivating books. Here are some renowned mystery novels along with their respective authors:
+
+4. **"The Da Vinci Code"** by Dan Brown
+5. **"Murder on the Orient Express"** by Agatha Christie
+6. **"Big Little Lies"** by Liane Moriarty
+7. **"The Secret History"** by Donna Tartt
+8. **"In the Woods"** by Tana French
+9. **"The Cuckoo's Calling"** by Robert Galbraith (pseudonym used by J.K. Rowling)
+10. **"The Woman in White"** by Wilkie Collins
+
+"The No. 1 Ladies' Detective Agency" by Alexander McCall Smith
+"And Then There Were None" by Agatha Christie
+"The Silent Patient" by Alex Michaelides
+"The Secret Place" by Tana French
+"The Girl on the Train" by Paula Hawkins
+"Sharp Objects" by Gillian Flynn
+"The Snowman" by Jo Nesbø
+"The Reversal" by Michael Connelly
+"The Secret Keeper" by Kate Morton
+"Dark Places" by Gillian Flynn
+
+Certainly! Here's a mix of fiction and nonfiction books along with their respective authors:
+
+### Fiction Books:
+
+1. **"1984"** by George Orwell
+2. **"To Kill a Mockingbird"** by Harper Lee
+3. **"The Great Gatsby"** by F. Scott Fitzgerald
+4. **"Pride and Prejudice"** by Jane Austen
+5. **"The Catcher in the Rye"** by J.D. Salinger
+6. **"The Lord of the Rings"** by J.R.R. Tolkien
+7. **"The Handmaid's Tale"** by Margaret Atwood
+8. **"Beloved"** by Toni Morrison
+9. **"One Hundred Years of Solitude"** by Gabriel García Márquez
+10. **"The Kite Runner"** by Khaled Hosseini
+"The Night Circus" by Erin Morgenstern
+"The Alchemist" by Paulo Coelho
+"Station Eleven" by Emily St. John Mandel
+"The Underground Railroad" by Colson Whitehead
+"Norwegian Wood" by Haruki Murakami
+"The Road" by Cormac McCarthy
+"Little Fires Everywhere" by Celeste Ng
+"The Goldfinch" by Donna Tartt
+"Americanah" by Chimamanda Ngozi Adichie
+"The Book Thief" by Markus Zusak
+
+### Nonfiction Books:
+
+1. **"Sapiens: A Brief History of Humankind"** by Yuval Noah Harari
+2. **"Becoming"** by Michelle Obama
+3. **"The Immortal Life of Henrietta Lacks"** by Rebecca Skloot
+4. **"Educated"** by Tara Westover
+5. **"The Power of Habit: Why We Do What We Do in Life and Business"** by Charles Duhigg
+6. **"Thinking, Fast and Slow"** by Daniel Kahneman
+7. **"The Sixth Extinction: An Unnatural History"** by Elizabeth Kolbert
+8. **"Quiet: The Power of Introverts in a World That Can't Stop Talking"** by Susan Cain
+9. **"Born a Crime: Stories from a South African Childhood"** by Trevor Noah
+10. **"The Body Keeps the Score: Brain, Mind, and Body in the Healing of Trauma"** by Bessel van der Kolk
+"Homo Deus: A Brief History of Tomorrow" by Yuval Noah Harari
+"Bad Blood: Secrets and Lies in a Silicon Valley Startup" by John Carreyrou
+"Sapiens: A Graphic History: The Birth of Humankind" by Yuval Noah Harari, David Vandermeulen, Daniel Casanave
+"The Warmth of Other Suns: The Epic Story of America's Great Migration" by Isabel Wilkerson
+"The Emperor of All Maladies: A Biography of Cancer" by Siddhartha Mukherjee
+"Between the World and Me" by Ta-Nehisi Coates
+"The Four Agreements: A Practical Guide to Personal Freedom" by Don Miguel Ruiz
+"Just Mercy: A Story of Justice and Redemption" by Bryan Stevenson
+"The Art of War" by Sun Tzu
+"I Am Malala: The Story of the Girl Who Stood Up for Education and Was Shot by the Taliban" by Malala Yousafzai with Christina Lamb
+
+These books span across various genres and topics, offering both captivating stories and thought-provoking insights into real-life events and human experiences.
+
+!!!Create Table!!!
+CREATE TABLE `library_management`.`booklist` (`BookID` INT(200) NOT NULL AUTO_INCREMENT ,
+ `Book Name` TEXT NOT NULL , `Book Type` TEXT NOT NULL , `Author Name` TEXT NOT NULL , PRIMARY KEY (`BookID`)) ENGINE = InnoDB;
+
+
+///
+INSERT INTO `booklist` (`BookID`, `Book Name`, `Book Type`, `Author Name`) VALUES
+ ('001', 'The Hound of the Baskervilles', 'Mystery', 'Conan Doyle'), ('002', 'Gone Girl', 'Mystery', 'Gillian Flynn'), 
+('003', 'The Girl with the Dragon Tattoo', 'Mystery', 'Stieg Larsson'), ('004', 'The Da Vinci Code', 'Mystery', 'Dan Brown'), 
+('005', 'Murder on the Orient Express', 'Mystery', 'Agatha Christie'), ('006', 'Big Little Lies', 'Mystery', 'Liane Moriarty'),
+ ('007', 'To Kill a Mockingbird', 'Fiction', 'Harper Lee'), ('008', 'The Great Graspby', 'Fiction', 'F. Scott Fitzgerald'), 
+('009', 'Pride and Prejudice', 'Fiction', 'Jane Austen'), ('010', 'The Catcher in the Rye', 'Fiction', 'J.D. Salinger'), 
+('011', 'The Lord of the Rings', 'Fiction', 'J.R.R. Tolkien'), ('012', 'The Handmaid\'s Tale', 'Fiction', 'Margaret Atwood'),
+ ('013', 'The Kite Runner', 'Fiction', 'Khaled Hosseini'), ('014', 'Sapiens: A Brief History of Humankind', 'Nonfiction', 'Yuval Noah Harari'),
+ ('015', 'Becoming', 'Nonfiction', 'Michelle Obama'), ('016', 'The Immortal Life of Henrietta Lacks', 'Nonfiction', 'Rebecca Skloot'), 
+('017', 'Educated', 'Nonfiction', 'Tara Westover'), ('018', 'The Power of Habit: Why We Do What We Do in Life and Business', 'Nonfiction', 'Charles Duhigg'),
+ ('019', 'Thinking, Fast and Slow', 'Nonfiction', 'Daniel Kahneman'), ('020', 'The Sixth Extinction: An Unnatural History', 'Nonfiction', 'Elizabeth Kolbert');
+
+
+
+3 tables--->
+1)user--->user info(student/teacher/librarian info)done
+2)books--->done
+3)user_books-->User_Book_ID(PKp),USERID(FK),BOOKID(FK), borrowed date, no of days borrowed, fine(derived fleid)
