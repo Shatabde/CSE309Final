@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id'])) {
                             <th>Book Title</th>
                             <th>Book Type</th>
                             <th>Author Name</th>
-                            <th>Delete</th>
+                            <th>Borrow</th>
                         </tr>
                     </thead>
                     <?php

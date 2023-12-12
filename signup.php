@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         .signup-box {
             width: 30%;
-            height: 50%;
+            height: 80%;
             color: #fff;
             background: #5fa6ede6;
             position: absolute;

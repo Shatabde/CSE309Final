@@ -8,7 +8,7 @@ if (isset($_POST['del'])) {
 
 	$id = sanitize(trim($_POST['id']));
 
-	$sql_del = "DELETE FROM bookss where book_id = $id";
+	$sql_del = "DELETE FROM books where book_id = $id";
 	$error = false;
 	$result = mysqli_query($conn, $sql_del);
 	if ($result) {
